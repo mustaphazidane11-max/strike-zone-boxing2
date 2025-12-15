@@ -1,0 +1,1520 @@
+/* ==========================================================================
+    RESET & BASE STYLES
+    ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Couleurs principales */
+    --color-black: #1a1a1a;
+    --color-gold: #FFC300;
+    --color-light-grey: #f0f0f0;
+    --color-white: #ffffff;
+    --color-whatsapp: #25D366;
+    --color-text-gray: #666666;
+    
+    /* Variables utilitaires */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.7;
+    background-color: var(--color-light-grey);
+    color: #333;
+    direction: rtl;
+    text-align: right;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-gold);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--color-black);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+    UTILITY CLASSES
+    ========================================================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--color-black);
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 80px;
+    height: 3px;
+    background: var(--color-gold);
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 60px;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dark-bg {
+    background-color: var(--color-black);
+    color: var(--color-light-grey);
+}
+
+.dark-bg .section-title {
+    color: var(--color-gold);
+}
+
+.dark-bg .section-title::after {
+    background: var(--color-white);
+}
+
+/* ==========================================================================
+    BUTTONS
+    ========================================================================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    font-family: 'Cairo', sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+    border: 2px solid var(--color-gold);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-black);
+    color: var(--color-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Style pour le bouton de téléchargement du PDF */
+.btn-download {
+    background-color: var(--color-white); 
+    color: #C30000; /* Rouge pour le PDF */
+    border: 2px solid #C30000; 
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    display: inline-flex; 
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.btn-download:hover {
+    background-color: #C30000;
+    color: var(--color-white);
+    border-color: var(--color-white);
+    transform: translateY(-3px);
+}
+
+.pdf-download-area {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 2px dashed var(--color-gold);
+    border-bottom: 2px dashed var(--color-gold);
+    margin-top: 50px;
+}
+
+.pdf-download-area .section-title {
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+    HEADER & NAVIGATION
+    ========================================================================== */
+
+#main-header {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    gap: 10px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 4px;
+}
+
+.logo span {
+    color: var(--color-gold);
+    font-weight: 400;
+}
+
+/* Navigation Desktop */
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.main-nav a {
+    color: var(--color-white);
+    font-size: 1.05rem;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-gold);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Ta3dīl dyāl l-button f l-navigation */
+.main-nav .btn-contact {
+    background-color: var(--color-gold);
+    color: var(--color-black) !important;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-weight: 700; 
+    white-space: nowrap;
+}
+
+.main-nav .btn-contact:hover {
+    background-color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.main-nav .btn-contact::after {
+    display: none;
+}
+
+/* ==========================================================================
+    MENU TOGGLE BUTTON 
+    ========================================================================== */
+
+#menu-toggle {
+    background: none;
+    border: none;
+    color: var(--color-gold);
+    font-size: 1.7rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 1001;
+    border-radius: 4px;
+}
+
+#menu-toggle:hover {
+    color: var(--color-white);
+    background: rgba(255, 195, 0, 0.1);
+}
+
+#menu-toggle[aria-expanded="true"] i {
+    transform: rotate(90deg);
+}
+
+/* Desktop - le bouton est caché */
+@media (min-width: 769px) {
+    #menu-toggle {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+    HERO SECTION
+    ========================================================================== */
+
+#hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('images/salle0.jpg') no-repeat center center/cover;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: var(--color-white);
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#hero h2 {
+    font-size: 3.8rem;
+    margin-bottom: 20px;
+    color: var(--color-gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#hero p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+    GRID SYSTEM
+    ========================================================================== */
+
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.grid-3-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* ==========================================================================
+    ABOUT SECTION
+    ========================================================================== */
+
+#about-boxing h4 {
+    color: var(--color-gold);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#about-boxing p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+#about-boxing ul {
+    list-style-type: none;
+}
+
+#about-boxing ul li {
+    margin-bottom: 10px;
+    padding-right: 20px;
+    position: relative;
+}
+
+#about-boxing ul li::before {
+    content: '•';
+    color: var(--color-gold);
+    position: absolute;
+    right: 0;
+    font-size: 1.5rem;
+}
+
+.partnership-info {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.partnership-info h4 {
+    color: var(--color-white);
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+    SERVICES SECTION
+    ========================================================================== */
+
+#services {
+    background-color: var(--color-light-grey);
+}
+
+.service-cards .card {
+    background: var(--color-white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-cards .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-cards .card i {
+    color: var(--color-gold);
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.service-cards .card h4 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--color-black);
+}
+
+.service-cards .card ul {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.service-cards .card li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 0.95rem;
+}
+
+.service-cards .card li:last-child {
+    border-bottom: none;
+}
+
+/* ==========================================================================
+    GALLERY SECTION (CAROUSEL STYLE - B-DŪN CAPTION)
+    ========================================================================== */
+
+.image-carousel-container {
+    position: relative;
+    max-width: 800px; 
+    margin: 0px auto 40px auto;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* J-uz-’ j-dīd l-d-īv l-k-b-īr l-d-ā-kh-l */
+.carousel-display-box {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-slide {
+    width: 100%; 
+    height: 450px; 
+    object-fit: cover;
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out; 
+}
+
+/* Boutons de Navigation */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--color-white);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 50;
+    font-size: 1.5rem;
+    line-height: 1;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-black);
+}
+
+.prev-btn {
+    right: 15px;
+}
+
+.next-btn {
+    left: 15px;
+}
+
+/* Indicators (l-n-q-a-t) */
+.carousel-indicators-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 60;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background-color: var(--color-gold);
+    border: 1px solid var(--color-black);
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+    TIMETABLE SECTION (Nouveau Style Tableau)
+    ========================================================================== */
+
+#timetable {
+    background-color: var(--color-light-grey);
+}
+
+/* Style pour la box d'inscription (maintenant dans timetable) */
+.fee-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-gold); 
+    padding: 18px 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e6b300;
+}
+
+.fee-box .fee-item {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fee-box .fee-item i {
+    color: var(--color-black);
+}
+
+.fee-box .fee-price {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #C30000; /* Red for emphasis */
+    background: var(--color-white);
+    padding: 5px 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style spécifique للبوكس ديال التأمين في جدول التوقيت */
+.timetable-fee-box {
+    max-width: 600px;
+    margin: 0px auto 40px auto;
+    background: var(--color-gold);
+    border: 2px solid var(--color-black);
+}
+
+.timetable-table-container {
+    overflow-x: auto; 
+    margin-bottom: 40px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+}
+
+.timetable-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; 
+    text-align: center;
+}
+
+.timetable-table th,
+.timetable-table td {
+    padding: 15px 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.timetable-table th {
+    background-color: var(--color-black);
+    color: var(--color-gold);
+    font-weight: 700;
+    border-color: #333;
+    white-space: nowrap;
+}
+
+.timetable-table td {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-weight: 500;
+}
+
+.timetable-table tbody tr:nth-child(even) td {
+    background-color: #f7f7f7;
+}
+
+.timetable-table i {
+    color: var(--color-gold);
+    margin-left: 5px;
+}
+
+/* Style pour les lignes importantes (Shuban/Kbar) */
+.timetable-table .highlight-row td {
+    background-color: #ffe08a; /* Couleur jaune فاتح */
+    color: var(--color-black);
+    font-weight: 700;
+    border-left: 5px solid var(--color-gold);
+}
+
+/* Style pour les حصص خاصة */
+.timetable-table .private-row td {
+    background-color: #333;
+    color: var(--color-white);
+    font-style: italic;
+}
+
+.rules-hint {
+    margin-top: 60px;
+    border-top: 2px dashed var(--color-gold);
+    padding-top: 30px;
+    text-align: center;
+}
+
+.rules-hint h4 {
+    color: var(--color-black);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* ==========================================================================
+    EQUIPMENT LIST STYLES (مستلزمات الملاكمة)
+    ========================================================================== */
+    
+.equipment-list-section .section-title {
+    color: var(--color-black);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #ccc;
+}
+
+.equipment-table-container {
+    overflow-x: auto;
+    margin-bottom: 40px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    max-width: 700px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.equipment-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px;
+    text-align: center;
+}
+
+.equipment-table th,
+.equipment-table td {
+    padding: 15px 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: var(--color-black);
+}
+
+.equipment-table th {
+    background-color: var(--color-black);
+    color: var(--color-gold);
+    font-weight: 700;
+    border-color: #333;
+}
+
+.equipment-table tbody tr:nth-child(even) td {
+    background-color: #f7f7f7;
+}
+
+.equipment-table .highlight-eq td {
+    background-color: #ffe08a; /* Jaune clair pour les chaussures */
+    font-weight: 700;
+}
+
+/* ==========================================================================
+    COACHES SECTION (MODIFICATIONS PRINCIPALES)
+    ========================================================================== */
+
+.coaches-grid {
+    text-align: center;
+}
+
+.coach-card {
+    background: var(--color-white);
+    padding: 30px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coach-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 195, 0, 0.2);
+}
+
+.coach-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid var(--color-gold);
+}
+
+.coach-card h4 {
+    font-size: 1.4rem;
+    color: var(--color-black);
+    margin-bottom: 10px;
+}
+
+/* MODIFICATION PRINCIPALE: Color dyal description */
+.coach-description {
+    color: var(--color-text-gray); /* Gray li bghiti */
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* MODIFICATION: Style l'coach-bio */
+.coach-bio {
+    margin-top: 15px;
+    width: 100%;
+    padding: 0;
+    text-align: right;
+}
+
+.coach-bio li {
+    margin-bottom: 10px;
+    padding-right: 25px;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--color-black);
+}
+
+.coach-bio li i {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    font-size: 1rem;
+    color: var(--color-gold);
+}
+
+.coach-bio strong {
+    color: var(--color-gold);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+    RULES SECTION
+    ========================================================================== */
+
+#rules {
+    background-color: var(--color-black);
+}
+
+#rules .rules-list {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#rules .rules-list ul {
+    margin: 0;
+}
+
+#rules .rules-list li {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--color-light-grey); 
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+#rules .rules-list i {
+    color: var(--color-gold);
+    font-size: 1.3rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+    FEES (شروط التسجيل) SECTION
+    ========================================================================== */
+
+#fees {
+    background-color: var(--color-light-grey); 
+    color: var(--color-black);
+}
+
+#fees .section-title {
+    color: var(--color-black);
+}
+
+.registration-requirements {
+    margin-top: 30px;
+}
+
+.registration-requirements .category-box {
+    background: var(--color-white); 
+    padding: 25px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid #eee;
+}
+
+.registration-requirements h5 {
+    color: var(--color-black);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.registration-requirements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.registration-requirements li {
+    padding: 10px 0;
+    border-bottom: 1px dotted #ddd;
+    position: relative;
+    padding-right: 30px;
+    font-size: 0.95rem;
+    color: var(--color-black); 
+}
+
+.registration-requirements li:last-child {
+    border-bottom: none;
+}
+
+.registration-requirements li::before {
+    content: '\f058'; 
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--color-gold);
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.general-req {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--color-gold);
+}
+
+.general-req h6 {
+    color: var(--color-black); 
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.pdf-download-area .section-title {
+    color: var(--color-black) !important; 
+}
+
+/* ==========================================================================
+    LOCALISATION SECTION
+    ========================================================================== */
+
+#location {
+    background-color: var(--color-light-grey);
+    text-align: center;
+}
+
+.location-map-img {
+    width: 100%; 
+    height: auto;
+    max-height: 250px; 
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+    CONTACT SECTION
+    ========================================================================== */
+
+#contact .contact-info {
+    padding-left: 40px;
+}
+
+#contact p {
+    margin-bottom: 30px;
+    color: #bbb; 
+    line-height: 1.8;
+}
+
+/* --- Styles pour les détails de contact --- */
+#contact .contact-details {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--color-gold);
+    border-radius: var(--border-radius);
+    background: #333; 
+}
+
+#contact .contact-details h4 {
+    color: var(--color-white);
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#contact .contact-details h4:first-child {
+    margin-top: 0;
+}
+
+#contact .contact-details p {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--color-light-grey);
+}
+
+#contact .contact-details a {
+    color: var(--color-gold); 
+    text-decoration: underline;
+}
+
+#contact .contact-details a:hover {
+    color: var(--color-white);
+    text-decoration: none;
+}
+/* ----------------------------------------- */
+
+/* Social Links */
+.social-links h4 {
+    color: var(--color-white); 
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-links > div {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    font-size: 1.8rem;
+    color: var(--color-white);
+    transition: var(--transition);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #333;
+}
+
+.social-links a:hover {
+    color: var(--color-gold);
+    background: #444;
+    transform: translateY(-3px);
+}
+
+.social-links .whatsapp-link {
+    color: var(--color-whatsapp) !important;
+}
+
+.social-links .whatsapp-link:hover {
+    background: rgba(37, 211, 102, 0.1);
+}
+
+/* Form Styles */
+.contact-form {
+    background: var(--color-black);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-gold);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Cairo', sans-serif;
+    transition: var(--transition);
+    background-color: #2a2a2a; 
+    color: var(--color-light-grey);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 2px rgba(255, 195, 0, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px; 
+}
+
+/* Form Status Message */
+#form-status-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+#form-status-message.success {
+    display: block;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#form-status-message.error {
+    display: block;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ==========================================================================
+    FOOTER
+    ========================================================================== */
+
+footer {
+    background: var(--color-black);
+    color: #888;
+    text-align: center;
+    padding: 30px 0;
+    border-top: 5px solid var(--color-gold);
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer a {
+    color: #888;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--color-gold);
+}
+
+/* ==========================================================================
+    SCROLL TO TOP BUTTON
+    ========================================================================== */
+
+#scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: var(--color-gold);
+    color: var(--color-black);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+#scroll-to-top:hover {
+    background: var(--color-black);
+    color: var(--color-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+#scroll-to-top:focus {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+    MODAL POP-UP STYLES (إعلان الافتتاح)
+    ========================================================================== */
+
+.modal-overlay {
+    /* Cache par défaut */
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000; 
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    /* T-t-3d-īl: Background 3lā ḥ-s-ab ṭ-l-b-k (salle6.jpg) */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('images/salle6.jpg') no-repeat center center/cover;
+    color: var(--color-white); /* Bāsh y-bān n-n-aṣ-ṣ f-f-ūq s-sū-wr-a */
+    
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    border: 5px solid var(--color-gold);
+}
+
+.modal-overlay.open .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    line-height: 1;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: #C30000;
+}
+
+.modal-body {
+    padding: 20px 0;
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    border: 3px solid var(--color-gold);
+    object-fit: cover;
+}
+
+.modal-body h2 {
+    color: var(--color-gold); /* T-t-3d-īl l-l-3-un bāsh y-bān */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.modal-message {
+    font-size: 1.3rem;
+    color: var(--color-white); /* T-t-3d-īl l-l-3-un bāsh y-bān */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.highlight-text {
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 1.3rem;
+    display: block;
+}
+
+.modal-date {
+    background: var(--color-gold);
+    color: var(--color-black);
+    padding: 15px 10px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    margin: 25px 0;
+    line-height: 1.5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-date {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #C30000; /* Rouge pour la date */
+    margin-top: 5px;
+}
+
+.modal-subtext {
+    font-size: 0.95rem;
+    color: #ccc; /* T-t-3d-īl l-l-3-un bāsh y-bān */
+    margin-bottom: 25px;
+}
+
+.modal-btn {
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+    MEDIA QUERIES (RESPONSIVE)
+    ========================================================================== */
+
+/* Tablet (992px et moins) */
+@media (max-width: 992px) {
+    .grid-3-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* ==========================================================================
+    MOBILE (768px et moins) 
+    ========================================================================== */
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-padding {
+        padding: 60px 0;
+    }
+    
+    .grid-2-cols,
+    .grid-3-cols {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Mobile Navigation */
+    #menu-toggle {
+        display: flex !important;
+        position: relative;
+        z-index: 1001;
+    }
+    
+    .main-nav {
+        display: none;
+        position: fixed;
+        top: 80px;
+        right: 0;
+        left: 0;
+        background: var(--color-black);
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+    }
+    
+    .main-nav.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .main-nav li {
+        width: 100%;
+    }
+    
+    .main-nav a {
+        display: block;
+        padding: 15px 0;
+        border-bottom: 1px solid #333;
+        font-size: 1.1rem;
+    }
+    
+    .main-nav a:last-child {
+        border-bottom: none;
+    }
+    
+    /* Ta3dīl l-button f-mobile */
+    .main-nav .btn-contact {
+        padding: 12px 20px; /* Adjusté pour le mobile */
+        text-align: center;
+        width: 100%;
+        margin-top: 15px; 
+    }
+    
+    /* Hero Section */
+    #hero {
+        height: 500px;
+    }
+    
+    #hero h2 {
+        font-size: 2.5rem;
+    }
+    
+    #hero p {
+        font-size: 1.1rem;
+    }
+    
+    /* Contact Section */
+    #contact .contact-info {
+        padding-left: 0;
+        margin-bottom: 40px;
+    }
+    
+    /* Responsive Fee Box */
+    .fee-box {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 15px 20px;
+    }
+    
+    .fee-box .fee-item {
+        width: 100%;
+        text-align: right;
+        margin-bottom: 5px;
+        font-size: 1rem;
+    }
+    
+    .fee-box .fee-price {
+        font-size: 1.4rem;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .timetable-fee-box {
+        margin: 0 auto 30px auto;
+    }
+    
+    /* PDF Download */
+    .btn-download {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1rem;
+        justify-content: center;
+    }
+    
+    /* Scroll to Top */
+    #scroll-to-top {
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    /* Responsive Modal */
+    .modal-content {
+        padding: 20px;
+    }
+    .modal-body h2 {
+        font-size: 1.5rem;
+    }
+    .highlight-date {
+        font-size: 1.5rem;
+    }
+    
+    /* T3DIL: Carousel Mobile */
+    .carousel-slide {
+        height: 350px; 
+    }
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Small Mobile (480px et moins) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    #hero h2 {
+        font-size: 2rem;
+    }
+    
+    .logo a {
+        font-size: 1.5rem;
+    }
+    
+    .contact-form {
+        padding: 25px;
+    }
+    
+    .social-links a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    /* Ajustement menu mobile pour très petits إكران */
+    #menu-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    .main-nav {
+        top: 75px;
+    }
+    
+    /* T3DIL: Carousel Small Mobile */
+    .carousel-slide {
+        height: 250px; 
+    }
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
